@@ -258,6 +258,27 @@ body{--uc-color-color-Nf4tUXOJp7:#124444;--uc-color-color-asfBnfLWBVy3:#c59a76;-
   .kvb-shell{padding:6px}
   .kvb-go{min-height:58px}
 }
+.kvb-grid{align-items:stretch}
+.kvb-grid>div:first-child{display:flex;flex-direction:column;min-width:0}
+.kvb-panel{display:flex}
+.kvb-pin{display:flex;flex-direction:column;flex:1;width:100%;box-sizing:border-box}
+.kvb-steps{flex:1;display:flex;flex-direction:column;margin-bottom:20px}
+.kvb-steps>li{flex:1;display:flex;margin:0;min-height:0}
+.kvb-steps>li>.kvb-step{flex:1;height:auto}
+.kvb-steps>li:not(:last-child)>.kvb-step{border-bottom:0}
+.kvb-opts{display:grid;grid-template-columns:1fr 1fr;gap:18px 14px;padding:8px 0 18px}
+.kvb-og{min-width:0}
+#kvb-garage .kvb-chip.on{background:var(--c-sand);border-color:var(--c-sand);color:var(--c-cream)}
+.kvb-og:nth-child(3){grid-column:1/-1}
+.kvb-opts .kvb-label{margin:0 0 8px}
+.kvb-opts .kvb-chips{display:grid;gap:8px;margin:0}
+.kvb-og:nth-child(-n+2) .kvb-chips{grid-template-columns:1fr 1fr}
+.kvb-og:nth-child(3) .kvb-chips{grid-template-columns:repeat(5,1fr)}
+.kvb-opts .kvb-chip{min-height:48px;padding:8px 6px;text-align:center;white-space:nowrap}
+@media (max-width:639px){.kvb-opts{grid-template-columns:1fr;gap:14px}.kvb-og:nth-child(3){grid-column:auto}.kvb-opts .kvb-chip{min-height:44px;padding:8px 2px}}
+@media (max-width:900px){.kvb-steps{flex:none}.kvb-steps>li{flex:none}}
+.kvb.is-done .kvb-go{display:none}
+.kvb .kvb-final{margin-top:12px;padding:clamp(18px,2.4vw,28px)}
 </style>
 
 <section class="kvb" id="kvb">
@@ -267,7 +288,13 @@ body{--uc-color-color-Nf4tUXOJp7:#124444;--uc-color-color-asfBnfLWBVy3:#c59a76;-
     <p class="kvb-lead" data-rv>Нажимайте на этапы по порядку. Дом растёт на глазах, стоимость складывается.</p>
     <div class="kvb-grid">
       <div>
-        <div class="kvb-shell" data-rv><div class="kvb-scene" id="kvb-scene">
+        <div class="kvb-shell" data-rv>
+        <div class="kvb-opts">
+          <div class="kvb-og"><p class="kvb-label">Этажность</p><div class="kvb-chips" id="kvb-floors"></div></div>
+          <div class="kvb-og"><p class="kvb-label">Гараж</p><div class="kvb-chips" id="kvb-garage"></div></div>
+          <div class="kvb-og"><p class="kvb-label">Площадь дома</p><div class="kvb-chips" id="kvb-chips"></div></div>
+        </div>
+<div class="kvb-scene" id="kvb-scene">
           <canvas class="kvb-canvas" id="kvb-canvas"></canvas>
           <div class="kvb-plan-note" id="kvb-plan-note">Загружаем 3D-сцену…</div>
           <div class="kvb-badge"><span>Стоимость</span><b id="kvb-badge">0 руб.</b></div>
@@ -282,27 +309,21 @@ body{--uc-color-color-Nf4tUXOJp7:#124444;--uc-color-color-asfBnfLWBVy3:#c59a76;-
           <button class="kvb-zoom m" id="kvb-zout" type="button" aria-label="Отдалить">−</button>
         </div></div>
         <button class="kvb-go" id="kvb-go" type="button"><i></i><em></em><span class="arr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></button>
-      </div>
-      <div class="kvb-panel" data-rv><div class="kvb-pin">
-        <p class="kvb-label">Этажность</p>
-        <div class="kvb-chips" id="kvb-floors"></div>
-        <p class="kvb-label">Гараж</p>
-        <div class="kvb-chips" id="kvb-garage"></div>
-        <p class="kvb-label">Площадь дома</p>
-        <div class="kvb-chips" id="kvb-chips"></div>
-        <p class="kvb-label" id="kvb-steps-label">Этапы</p>
-        <ol class="kvb-steps" id="kvb-steps"></ol>
-        <div class="kvb-total">
-          <p class="kvb-label" id="kvb-total-label">Итого</p>
-          <b id="kvb-total">0 руб.</b>
-          <p class="kvb-note">Цены ориентировочные. Точная сумма зависит от проекта, материалов и участка.</p>
-        </div>
         <div class="kvb-final">
           <h3 id="kvb-final-h">Дом готов</h3>
           <p>Точную смету посчитаем под ваш проект и участок.</p>
           <button class="kvb-btn a" id="kvb-cta" type="button">Получить точный расчёт</button>
           <a class="kvb-btn b" id="kvb-max" target="_blank" rel="noopener">Написать в MAX</a>
           <button class="kvb-again" id="kvb-again" type="button">Построить заново</button>
+        </div>
+      </div>
+      <div class="kvb-panel" data-rv><div class="kvb-pin">
+        <p class="kvb-label" id="kvb-steps-label">Этапы</p>
+        <ol class="kvb-steps" id="kvb-steps"></ol>
+        <div class="kvb-total">
+          <p class="kvb-label" id="kvb-total-label">Итого</p>
+          <b id="kvb-total">0 руб.</b>
+          <p class="kvb-note">Цены ориентировочные. Точная сумма зависит от проекта, материалов и участка.</p>
         </div>
       </div></div>
     </div>
