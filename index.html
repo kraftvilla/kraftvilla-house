@@ -281,13 +281,20 @@ body{--uc-color-color-Nf4tUXOJp7:#124444;--uc-color-color-asfBnfLWBVy3:#c59a76;-
 .kvb-pin{padding:16px 20px}
 .kvb-panel .kvb-label{margin-bottom:6px}
 .kvb-steps{margin-bottom:8px}
-.kvb-step{padding:8px 8px}
+.kvb-step{padding:6px 8px}
+.kvb-pin{padding-bottom:12px}
 .kvb.is-done .kvb-total{display:none}
 .kvb.is-done .kvb-final{margin-top:6px;padding:16px 22px}
 .kvb.is-done .kvb-final p{margin-bottom:10px}
 .kvb.is-done .kvb-final .kvb-btn{min-height:44px;padding:10px 16px}
 .kvb.is-done .kvb-final .kvb-again{margin-top:4px;padding:6px}
 }
+@media (max-width:900px){.kvb .kvb-final h3{line-height:1.22;margin-bottom:10px}}
+@media (max-width:639px){.kvb .kvb-final h3{line-height:1.3;margin-bottom:12px}}
+.kvb .kvb-final .kvb-btn{display:flex;align-items:center;justify-content:center;text-align:center;box-sizing:border-box;line-height:1.2}
+.kvb.is-done .kvb-total{display:none}
+.kvb .kvb-final-note{display:none;margin:10px 0 0}
+.kvb.is-done .kvb-final-note{display:block}
 .kvb.is-done .kvb-go{display:none}
 .kvb .kvb-final{margin-top:12px;padding:clamp(18px,2.4vw,28px)}
 </style>
@@ -336,6 +343,7 @@ body{--uc-color-color-Nf4tUXOJp7:#124444;--uc-color-color-asfBnfLWBVy3:#c59a76;-
           <a class="kvb-btn b" id="kvb-max" target="_blank" rel="noopener">Написать в MAX</a>
           <button class="kvb-again" id="kvb-again" type="button">Построить заново</button>
         </div>
+        <p class="kvb-note kvb-final-note">Цены ориентировочные. Точная сумма зависит от проекта, материалов и участка.</p>
       </div></div>
     </div>
   </div>
