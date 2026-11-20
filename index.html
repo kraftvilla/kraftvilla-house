@@ -263,7 +263,7 @@ body{--uc-color-color-Nf4tUXOJp7:#124444;--uc-color-color-asfBnfLWBVy3:#c59a76;-
 .kvb-panel{display:flex}
 .kvb-pin{display:flex;flex-direction:column;flex:1;width:100%;box-sizing:border-box}
 .kvb-steps{flex:1;display:flex;flex-direction:column;margin-bottom:20px}
-.kvb-steps>li{flex:1;display:flex;margin:0;min-height:0}
+.kvb-steps>li{flex:1;display:flex;margin:0;flex-shrink:0}
 .kvb-steps>li>.kvb-step{flex:1;height:auto}
 .kvb-steps>li:not(:last-child)>.kvb-step{border-bottom:0}
 .kvb-opts{display:grid;grid-template-columns:1fr 1fr;gap:18px 14px;padding:8px 0 18px}
@@ -277,6 +277,17 @@ body{--uc-color-color-Nf4tUXOJp7:#124444;--uc-color-color-asfBnfLWBVy3:#c59a76;-
 .kvb-opts .kvb-chip{min-height:48px;padding:8px 6px;text-align:center;white-space:nowrap}
 @media (max-width:639px){.kvb-opts{grid-template-columns:1fr;gap:14px}.kvb-og:nth-child(3){grid-column:auto}.kvb-opts .kvb-chip{min-height:44px;padding:8px 2px}}
 @media (max-width:900px){.kvb-steps{flex:none}.kvb-steps>li{flex:none}}
+@media (min-width:901px){
+.kvb-pin{padding:16px 20px}
+.kvb-panel .kvb-label{margin-bottom:6px}
+.kvb-steps{margin-bottom:8px}
+.kvb-step{padding:8px 8px}
+.kvb.is-done .kvb-total{display:none}
+.kvb.is-done .kvb-final{margin-top:6px;padding:16px 22px}
+.kvb.is-done .kvb-final p{margin-bottom:10px}
+.kvb.is-done .kvb-final .kvb-btn{min-height:44px;padding:10px 16px}
+.kvb.is-done .kvb-final .kvb-again{margin-top:4px;padding:6px}
+}
 .kvb.is-done .kvb-go{display:none}
 .kvb .kvb-final{margin-top:12px;padding:clamp(18px,2.4vw,28px)}
 </style>
@@ -309,13 +320,6 @@ body{--uc-color-color-Nf4tUXOJp7:#124444;--uc-color-color-asfBnfLWBVy3:#c59a76;-
           <button class="kvb-zoom m" id="kvb-zout" type="button" aria-label="Отдалить">−</button>
         </div></div>
         <button class="kvb-go" id="kvb-go" type="button"><i></i><em></em><span class="arr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></button>
-        <div class="kvb-final">
-          <h3 id="kvb-final-h">Дом готов</h3>
-          <p>Точную смету посчитаем под ваш проект и участок.</p>
-          <button class="kvb-btn a" id="kvb-cta" type="button">Получить точный расчёт</button>
-          <a class="kvb-btn b" id="kvb-max" target="_blank" rel="noopener">Написать в MAX</a>
-          <button class="kvb-again" id="kvb-again" type="button">Построить заново</button>
-        </div>
       </div>
       <div class="kvb-panel" data-rv><div class="kvb-pin">
         <p class="kvb-label" id="kvb-steps-label">Этапы</p>
@@ -324,6 +328,13 @@ body{--uc-color-color-Nf4tUXOJp7:#124444;--uc-color-color-asfBnfLWBVy3:#c59a76;-
           <p class="kvb-label" id="kvb-total-label">Итого</p>
           <b id="kvb-total">0 руб.</b>
           <p class="kvb-note">Цены ориентировочные. Точная сумма зависит от проекта, материалов и участка.</p>
+        </div>
+        <div class="kvb-final">
+          <h3 id="kvb-final-h">Дом готов</h3>
+          <p>Точную смету посчитаем под ваш проект и участок.</p>
+          <button class="kvb-btn a" id="kvb-cta" type="button">Получить точный расчёт</button>
+          <a class="kvb-btn b" id="kvb-max" target="_blank" rel="noopener">Написать в MAX</a>
+          <button class="kvb-again" id="kvb-again" type="button">Построить заново</button>
         </div>
       </div></div>
     </div>
